@@ -319,9 +319,10 @@ Banana Lang Js
 */
 
 body {
-  height: 100vh;
+  min-height: 90vh;
+  max-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr 1fr;
   color: var(--white);
   background: linear-gradient(
     to bottom,
@@ -369,8 +370,9 @@ main {
 textarea {
   width: 100%;
   height: 7rem;
-  padding: 0.75rem 0.5rem;
   outline: none;
+  font-size: 0.75rem;
+  padding: 0.75rem 0.5rem;
   border: 0.2rem solid var(--grey-400);
   border-radius: var(--borderRadius);
   color: var(--grey-500);
@@ -443,14 +445,15 @@ textarea::placeholder {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   letter-spacing: var(--letterSpacing);
 }
 
 .main-center .output-text {
   width: 100%;
-  min-height: 3rem;
-  max-height: 10rem;
+  font-size: 0.75rem;
+  min-height: 6rem;
+  max-height: 8rem;
   overflow: auto;
   padding: 0.75rem 0.5rem;
   border: 0.2rem solid var(--primary-600);
@@ -461,9 +464,10 @@ textarea::placeholder {
 }
 
 .about {
-  /* background: var(--primary-500); */
+  /* background: var(--primary-900); */
   padding-top: 0.25rem;
   padding-bottom: 0.75rem;
+  align-self: end;
   /* border: 2px solid #222; */
 }
 
@@ -471,14 +475,11 @@ textarea::placeholder {
   /* border: 2px solid red; */
   margin: 0 auto;
   max-width: 700px;
-  display: grid;
-  justify-items: center;
 }
 
 .about-center h2 {
-  justify-self: start;
   /* border: 2px solid red; */
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-transform: lowercase;
   font-style: italic;
   margin-bottom: 0.25rem;
@@ -486,12 +487,22 @@ textarea::placeholder {
 }
 
 .about-center p {
-  text-align: center;
   /* border: 2px solid red; */
+  max-width: 700px;
   letter-spacing: var(--letterSpacing);
   margin-bottom: 0;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+}
+
+@media screen and (min-width: 768px) {
+  .about {
+    align-self: center;
+    padding-bottom: 1rem;
+  }
+  .about-center p {
+    font-size: 1rem;
+  }
 }
 
 .alert-danger {
