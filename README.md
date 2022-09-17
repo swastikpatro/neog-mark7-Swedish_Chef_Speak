@@ -7,3 +7,5 @@ This is a translation app which converts English language to Swedish Chef's lang
 - HTML
 - CSS
 - JS
+
+[LIVE link](https://swastik-swedish-chef-speak.netlify.app/)
