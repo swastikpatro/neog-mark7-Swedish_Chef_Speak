@@ -506,6 +506,7 @@ textarea::placeholder {
 }
 
 .alert {
+  font-family: 'Kalra', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
   top: 0;
   left: 50%;
