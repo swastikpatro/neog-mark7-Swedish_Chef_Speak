@@ -425,11 +425,17 @@ textarea::placeholder {
   width: fit-content;
   margin: 0 auto;
   padding: 1.25rem;
-  font-size: 1.15rem;
   margin-bottom: 1rem;
   box-shadow: 0 4px 6px -1px var(--primary-500),
     0 2px 4px -1px var(--primary-900);
   transition: var(--transition);
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 768px) {
+  .btn.translate-btn {
+    font-size: 1rem;
+  }
 }
 
 .btn.translate-btn:hover {
