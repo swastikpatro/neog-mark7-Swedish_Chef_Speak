@@ -319,8 +319,7 @@ Banana Lang Js
 */
 
 body {
-  min-height: 90vh;
-  max-height: 100vh;
+  height: 95vh;
   display: grid;
   grid-template-rows: auto 1fr 1fr;
   color: var(--white);
@@ -331,6 +330,12 @@ body {
     var(--primary-500),
     var(--primary-800)
   );
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    height: 100vh;
+  }
 }
 
 header {
