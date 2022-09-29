@@ -5,23 +5,8 @@
 const textarea = document.querySelector('[name="text"]');
 const translateBtn = document.querySelector('.translate-btn');
 const outputDiv = document.querySelector('.output-text');
-const alertText = document.querySelector('.alert');
 const refreshBtn = document.querySelector('.refresh');
 const url = 'https://api.funtranslations.com/translate/chef.json';
-
-function alertMsg(alertType, msg) {
-  const tID = setInterval(() => {
-    alertText.innerText = `${msg}`;
-    alertText.classList.add(`alert-${alertType}`);
-    alertText.classList.add('show-alert');
-  }, 0);
-
-  setTimeout(() => {
-    clearInterval(tID);
-    alertText.classList.remove(`alert-${alertType}`);
-    alertText.classList.remove('show-alert');
-  }, 1000);
-}
 
 // Using fetch() .then()
 
@@ -29,9 +14,11 @@ function handleError(error) {
   console.log(error);
 }
 
-function displayText(sentence) {
+function displayText(sentence, condn) {
   outputDiv.innerText = sentence;
-  alertMsg('success', 'Translated ✅');
+  outputDiv.style.color = condn ? 'grey' : 'red';
+  outputDiv.style.fontSize = condn ? '1rem' : '1.25rem';
+  outputDiv.style.fontWeight = condn ? '500' : '800';
 }
 
 function translateText(myUrl) {
@@ -39,9 +26,9 @@ function translateText(myUrl) {
     .then(function (response) {
       if (!response.ok) {
         if (response.status === 429) {
-          alertMsg(
-            'danger',
-            `Error ${response.status}, rate limited, try after 1 hour.`
+          displayText(
+            `Error ${response.status}, rate limited, try after 1 hour.`,
+            false
           );
           throw new Error(
             `${response.status}, rate limited, try after 1 hour.`
@@ -55,7 +42,7 @@ function translateText(myUrl) {
       const {
         contents: { translated: translatedSent },
       } = data;
-      displayText(translatedSent);
+      displayText(translatedSent, true);
     })
     .catch(handleError);
 }
@@ -63,15 +50,14 @@ function translateText(myUrl) {
 function handleTranslateBtnClick() {
   const inputValue = textarea.value;
   if (!inputValue) {
-    alertMsg('danger', 'Please enter text');
-    defaultOutput();
+    displayText('Please enter your msg', false);
     return;
   }
   translateText(`${url}?text=${inputValue}`);
 }
 
 function defaultOutput() {
-  outputDiv.innerText = 'Translated text will be here...';
+  displayText('Translated text will be here...', true);
 }
 
 translateBtn.addEventListener('click', handleTranslateBtnClick);
@@ -81,8 +67,6 @@ refreshBtn.addEventListener('click', () => {
   defaultOutput();
 });
 
-textarea.addEventListener('input', (e) => {
-  if (!e.currentTarget.value) {
-    defaultOutput();
-  }
+textarea.addEventListener('click', () => {
+  defaultOutput();
 });
