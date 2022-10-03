@@ -2,6 +2,8 @@
 
 This is a translation app which converts English language to Swedish Chef's language.
 
+## [LIVE link](https://swastik-swedish-chef-speak.netlify.app/)
+
 ## Tech Used
 
 - HTML
@@ -15,4 +17,6 @@ This is a translation app which converts English language to Swedish Chef's lang
 - **(Additional feature)** If you click refresh button, the input is emptied (cleared) and the output will show the default text **"Translated text will be here..."**.
 - **(Additional feature)** If you click the textarea when output for previous operation is shown then the output will set to default text, because we assume you might be changing your input message.
 
-[LIVE link](https://swastik-swedish-chef-speak.netlify.app/)
+## Snapshot of the app
+
+![Swedish Chef Speak](./swedish-chef-speak-snap.JPG)
